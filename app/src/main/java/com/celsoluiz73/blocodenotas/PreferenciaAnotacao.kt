@@ -15,8 +15,8 @@ class PreferenciaAnotacao(private val context: Context) {
         editor.commit()
     }
 
-    fun recuperarAnotacao() {
-
+    fun recuperarAnotacao(): String? {
+        return preferences.getString(CHAVE, "")
     }
 
     init {

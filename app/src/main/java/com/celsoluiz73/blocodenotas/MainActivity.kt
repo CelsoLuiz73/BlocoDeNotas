@@ -25,21 +25,18 @@ class MainActivity : AppCompatActivity() {
         val botaoSalvar = binding.fab
 
         botaoSalvar.setOnClickListener {
-
             val anotacaoRecuperada = binding.editContainer.etxAnotacoes.text.toString()
-
             if (anotacaoRecuperada == "") {
                 Toast.makeText(this, "Por Favor digite algo para ser armazenado.", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Anotação salva com sucesso.", Toast.LENGTH_SHORT).show()
+                preferencia.salvarAnotacao(anotacaoRecuperada)
+                Toast.makeText(this, "Anotação salva com sucesso!", Toast.LENGTH_SHORT).show()
             }
-
         }
 
-
-
-
+        val anotacao = preferencia.recuperarAnotacao()
+        if (anotacao != "") {
+            binding.editContainer.etxAnotacoes.setText(anotacao)
+        }
     }
-
-
 }
